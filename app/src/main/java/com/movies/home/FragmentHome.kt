@@ -1,23 +1,85 @@
 package com.movies.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.movies.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.movies.databinding.FragmentHomeBinding
+import kotlinx.coroutines.launch
 
 class FragmentHome : Fragment() {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var movieAdapter: MovieAdapter
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("fragment", "ViewCreated")
+
+        setupRecyclerView()
+        setupListeners()
+        observeUiState()
+    }
+
+    private fun setupRecyclerView() {
+        movieAdapter = MovieAdapter { movie ->
+            Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        }
+        binding.rvMovies.adapter = movieAdapter
+    }
+
+    private fun setupListeners() {
+        binding.btnRetry.setOnClickListener {
+            viewModel.fetchPopularMovies()
+        }
+    }
+
+    private fun observeUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    when (state) {
+                        is HomeUiState.Loading -> {
+                            binding.progressBar.isVisible = true
+                            binding.layoutError.isVisible = false
+                        }
+                        is HomeUiState.Success -> {
+                            binding.progressBar.isVisible = false
+                            binding.layoutError.isVisible = false
+                            binding.rvMovies.isVisible = true
+                            movieAdapter.submitList(state.movies)
+                        }
+                        is HomeUiState.Error -> {
+                            binding.progressBar.isVisible = false
+                            binding.layoutError.isVisible = true
+                            binding.tvErrorMessage.text = state.message
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
