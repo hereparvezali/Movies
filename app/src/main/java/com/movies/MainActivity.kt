@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.movies.databinding.ActivityMainBinding
+import com.movies.home.FragmentHome
+import com.movies.profile.FragmentProfile
+import com.movies.search.FragmentSearch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,8 +30,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, fragment)
+        supportFragmentManager.beginTransaction()
+            .replace(binding.fragmentContainer.id, fragment)
             .commit()
-
     }
 }
