@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.ksp)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -54,6 +55,11 @@ dependencies {
 
     // Coil (Image Loading)
     implementation(libs.coil)
+
+    // Firebase Notification
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.messaging)
 
     // Room Database
     implementation(libs.room.runtime)

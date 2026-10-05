@@ -131,8 +131,10 @@ class FragmentDetails : Fragment() {
     private fun updateFavouriteButton(isFav: Boolean) {
         if (isFav) {
             binding.btnFavourite.setText(R.string.remove_from_favourites)
+            binding.btnFavourite.setIconResource(R.drawable.ic_favorite)
         } else {
             binding.btnFavourite.setText(R.string.add_to_favourites)
+            binding.btnFavourite.setIconResource(R.drawable.ic_favorite_border)
         }
     }
 

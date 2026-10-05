@@ -20,4 +20,9 @@
     <string name="search_prompt_description">Find movies by typing their title above</string>
     <string name="no_movies_found">No movies found</string>
     <string name="no_movies_found_description">Try searching with a different keyword</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_profile">Profile</string>
 </resources>

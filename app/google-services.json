@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1094576749763",
+    "project_id": "movies-bdjobs",
+    "storage_bucket": "movies-bdjobs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094576749763:android:9cd3920fb65d8d9c877676",
+        "android_client_info": {
+          "package_name": "com.movies"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW-0OJ3esVq057BSgmbQJ_8eWnQiMg9TY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
