@@ -15,7 +15,8 @@ import kotlinx.coroutines.flow.map
 
 interface MovieRepository {
 
-    suspend fun getPopularMovies(): Result<List<Movie>>
+    suspend fun getPopularMovies(page: Int = 1): Result<List<Movie>>
+    suspend fun getMoviesByCategory(category: String, page: Int = 1): Result<List<Movie>>
     suspend fun searchMovies(query: String): Result<List<Movie>>
     suspend fun getMovieDetails(movieId: Int): Result<MovieDetails>
 
@@ -31,9 +32,13 @@ class MovieRepositoryImpl(
     private val favoriteDao: FavoriteMovieDao = AppDatabase.getDatabase(MovieApp.instance).favoriteMovieDao()
 ) : MovieRepository {
 
-    override suspend fun getPopularMovies(): Result<List<Movie>> {
+    override suspend fun getPopularMovies(page: Int): Result<List<Movie>> {
+        return getMoviesByCategory("popular", page)
+    }
+
+    override suspend fun getMoviesByCategory(category: String, page: Int): Result<List<Movie>> {
         return try {
-            val response = apiService.getPopularMovies()
+            val response = apiService.getMoviesByCategory(category = category, page = page)
             val movies = response.results.map { dto ->
                 Movie(
                     id = dto.id,

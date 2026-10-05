@@ -26,4 +26,11 @@ interface TmdbApiService {
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = TmdbConstants.API_KEY
     ): TmdbMovieDetailsDto
+
+    @GET("movie/{category}")
+    suspend fun getMoviesByCategory(
+        @Path("category") category: String,
+        @Query("api_key") apiKey: String = TmdbConstants.API_KEY,
+        @Query("page") page: Int = 1
+    ): TmdbResponse
 }
