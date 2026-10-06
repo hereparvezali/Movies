@@ -1,4 +1,4 @@
-package com.movies.profile
+package com.movies.favorites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(
+class FavoritesViewModel(
     private val repository: MovieRepository = MovieRepositoryImpl()
 ) : ViewModel() {
 

@@ -1,4 +1,4 @@
-package com.movies.profile
+package com.movies.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,16 +12,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.movies.R
-import com.movies.databinding.FragmentProfileBinding
+import com.movies.databinding.FragmentFavoritesBinding
 import com.movies.details.FragmentDetails
 import kotlinx.coroutines.launch
 
-class FragmentProfile : Fragment() {
+class FragmentFavorites : Fragment() {
 
-    private var _binding: FragmentProfileBinding? = null
+    private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ProfileViewModel by viewModels()
+    private val viewModel: FavoritesViewModel by viewModels()
     private lateinit var favoriteAdapter: FavoriteMovieAdapter
 
     override fun onCreateView(
@@ -29,7 +29,7 @@ class FragmentProfile : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         return binding.root
     }
 

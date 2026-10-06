@@ -16,7 +16,7 @@ import com.movies.databinding.ActivityMainBinding
 import com.movies.details.FragmentDetails
 import com.movies.home.FragmentHome
 import com.movies.notification.NotificationHelper
-import com.movies.profile.FragmentProfile
+import com.movies.favorites.FragmentFavorites
 import com.movies.search.FragmentSearch
 
 class MainActivity : AppCompatActivity() {
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_profile -> {
-                    replaceFragment(FragmentProfile())
+                    replaceFragment(FragmentFavorites())
                     true
                 }
                 else -> false

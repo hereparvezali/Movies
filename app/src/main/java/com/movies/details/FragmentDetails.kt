@@ -1,6 +1,7 @@
 package com.movies.details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,10 +61,11 @@ class FragmentDetails : Fragment() {
             val currentState = viewModel.uiState.value
             if (currentState is DetailsUiState.Success) {
                 viewModel.toggleFavorite(currentState.movie, isFavourite)
+                val toastStr = currentState.movie.title.substring(0, minOf( 17, currentState.movie.title.length))
                 val messageRes = if (!isFavourite) {
-                    R.string.added_to_favourites
+                    "$toastStr... Added to favorites"
                 } else {
-                    R.string.removed_from_favourites
+                    "$toastStr... Removed from favorites"
                 }
                 Toast.makeText(requireContext(), messageRes, Toast.LENGTH_SHORT).show()
             }

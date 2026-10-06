@@ -1,4 +1,4 @@
-package com.movies.profile
+package com.movies.favorites
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
