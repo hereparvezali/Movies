@@ -6,9 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
+    android:layout_marginVertical="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
+    app:cardElevation="3dp"
     app:strokeWidth="1dp"
     app:strokeColor="?attr/colorOutlineVariant">
 
@@ -17,13 +20,16 @@
         android:layout_height="wrap_content"
         android:padding="12dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivPoster"
-            android:layout_width="72dp"
-            android:layout_height="100dp"
-            android:scaleType="center"
+            android:layout_width="76dp"
+            android:layout_height="110dp"
             android:background="@drawable/bg_poster_placeholder"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_movie_placeholder"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+            app:strokeColor="?attr/colorOutlineVariant"
+            app:strokeWidth="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,6 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -48,6 +55,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textColor="?android:attr/textColorSecondary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,18 +67,28 @@
 
         <TextView
             android:id="@+id/tvRating"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_rating_badge"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
             android:textAppearance="?attr/textAppearanceLabelMedium"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="@color/rating_gold"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/ivPoster"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvTitle"
-            app:layout_constraintTop_toBottomOf="@id/tvGenreAndYear"
-            app:layout_constraintVertical_bias="1.0"
             tools:text="★ 8.5" />
+
+        <ImageView
+            android:id="@+id/ivChevron"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:alpha="0.4"
+            android:src="@drawable/ic_chevron_right"
+            app:layout_constraintBottom_toBottomOf="@id/ivPoster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="?android:attr/textColorSecondary"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

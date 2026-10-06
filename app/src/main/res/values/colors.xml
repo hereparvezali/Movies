@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="gray">#FF554455</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rating_gold">#B87B00</color>
+    <color name="rating_badge_bg">#14B87B00</color>
+    <color name="rating_badge_border">#3DB87B00</color>
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rating_gold">#FFCA28</color>
+    <color name="rating_badge_bg">#26FFCA28</color>
+    <color name="rating_badge_border">#4DFFCA28</color>
+</resources>
